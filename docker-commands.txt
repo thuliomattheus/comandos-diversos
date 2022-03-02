@@ -1,0 +1,86 @@
+# Listar Imagens
+- docker images
+- docker image ls
+
+# Listar os containers em execução
+- docker ps
+- docker ps --no-trunc
+- docker container ls
+
+# Listar todos os containers
+- docker ps -a
+
+# Criar imagem a partir de um arquivo chamado Dockerfile
+- docker build <path_do_dockerfile>
+
+#Criar imagem a partir de um arquivo Dockerfile com outro nome
+- docker build -f <nome_do_arquivo> <path_doc_arquivo>
+-- Ex: docker build -f Dockerfile.build .
+
+# Iniciar container parado
+- docker start <nome_container>
+
+# Parar container em execução
+- docker stop <nome_container>
+
+# Reiniciar container em execução
+- docker restart <nome_container>
+
+# Renomear container
+- docker rename <nome_atual_container> <nome_futuro_container>
+
+# Remover imagem
+- docker rmi <nome_imagem>
+
+# Remover todas as imagens que não possuem containers associados
+- docker rmi -f $(docker images -a -q)
+
+# Remover container
+- docker rm <nome_container>
+
+# Remover todos os containers parados
+- docker rm $(docker ps --filter status=exited -q)
+- docker container prune
+
+# Exportar imagem como tar
+- docker save <id_da_imagem> > <nome_do_arquivo.tar>
+- docker save --output <nome_do_arquivo.tar> <id_da_imagem>
+- docker save -o <nome_do_arquivo.tar> <id_da_imagem>
+--Ex: docker save 1a83C > imagem-exportada.tar
+
+# Importar imagem de um arquivo tar
+- docker load < <nome_do_arquivo.tar>
+- docker load --input <nome_do_arquivo.tar>
+- docker load -i <nome_do_arquivo.tar>
+
+# Criar um container a partir de uma imagem e já iniciar esse container
+- docker run <nome_da_imagem>
+
+# Criar um container a partir de uma imagem e expor uma porta do container em uma porta do host
+- docker run -p <porta_do_host>:<porta_do_container> <nome_da_imagem>
+- docker run --publish <porta_do_host>:<porta_do_container> <nome_da_imagem>
+
+# Criar um container a partir de uma imagem e rodar esse container em segundo plano, não travando o console
+- docker run -d <nome_da_imagem>
+- docker run --detach <nome_da_imagem>
+
+# Criar um container a partir de uma imagem e dar um nome a esse container
+- docker run --name <nome_do_container> <nome_da_imagem>
+
+# Criar um container a partir de uma imagem e quando a execução desse novo container for interrompida, remover esse container
+- docker run --rm <nome_da_imagem>
+
+# Criar um container a partir de uma imagem e apontar a saída do console para o próprio container
+- docker run --it <nome_da_imagem>
+
+# Verificar o log dos containers
+- docker logs <nome_do_container>
+
+# Baixar uma imagem do registry configurado (o default é o Docker Hub)
+- docker pull <nome_da_imagem>
+
+# Enviar uma imagem local para o registry configurado (o default é o Docker Hub)
+- docker push <nome_da_imagem>
+
+# Procurar imagens a partir de uma palavra-chave no registry configurado (o default é o Docker Hub)
+- docker search <nome_da_imagem>
