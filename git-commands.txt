@@ -1,0 +1,83 @@
+# Inicializar um repositóio local no diretório atual
+- git init
+
+# Baixar uma cópia local do repositório remoto disponível na url informada
+- git clone <url_do_repositorio_remoto>
+
+# Adiciona as modificações do diretório local e dos subdiretórios ao estado "staged"
+- git add .
+
+# Adiciona as modificações locais que estavam como "staged" para o estado "commited"
+- git commit -m "mensagem do commit"
+
+# Adiciona as modificações locais que estavam como "staged" para o estado "commited", apenas para os arquivos que já existem no repositório remoto
+- git commit -am "mensagem do commit"
+
+# Realiza o merge da branch informada na branch atualmente ativa
+- git merge <nome_da_outra_branch>
+
+# Enviar as modificações commitadas do repositório local para o repositório remoto
+- git push
+
+# Enviar as modificações commitadas do repositório local para o repositório remoto apontando para o remote e para a branch informada
+- git push -u <apelido_do_remote> <nome_da_branch_do_repositório_remoto>
+- git push --set-upstream <apelido_do_remote> <nome_da_branch_do_repositório_remoto>
+--Ex: git push -u origin master
+
+# Atualizar o repositório local ao sincronizá-lo com uma cópia do repositório remoto
+- git pull
+
+# Alterar a branch ativa do repositório local para outra branch já existente
+- git checkout <nome_da_outra_branch>
+
+# Alterar a branch ativa do repositório local, apontando para uma nova branch
+- git checkout -b <nome_da_nova_branch>
+
+# Apontar o repositório local para um commit específico da cadeia de commits
+- git checkout 
+
+# Salvar endereço do repositório remoto no repositório local e "apelidá-la" como origin
+- git remote add origin git@github.com:thuliomattheus/comandos-diversos.git
+
+# Visualizar a lista de branches do repositório local
+- git branch
+
+# Visualizar a lista de todas as branches do projeto, incluindo as do repositório local e do remoto
+- git branch -a
+
+# Visualizar lista de commits do repositório local
+- git log
+
+# Verificação das mudanças entre os arquivos unstaged e os arquivos já no repositório remoto
+- git diff
+- git diff <nome_do_arquivo_específico>
+- git diff *.java
+- git diff *Test*
+
+# Lista de arquivos modificados e seus status, que podem ser unstaged, staged ou commited
+- git status
+
+# Cria um ambiente novo -semelhante a uma branch- e joga as modificações nesse ambiente
+- git stash
+
+# Recupera as modificações do ambiente criado pelo "git stash" e joga na branch atual ativa
+- git stash apply
+
+# Resetar arquivos modificados, o nível de reset pode ser modificado 
+- git reset
+- git reset --soft
+- git reset --mixed
+- git reset --hard
+
+# Lista as tags disponíveis no repositório informado (local ou remoto)
+- git tag
+
+# Lista com todas as variáveis configuradas usadas pelo git
+- git config --list
+
+# Chamada ou atribuição de variáveis configuráveis do git
+- git config user.name
+- git config user.name=meu nome aqui
+- git config user.email
+- git config user.email=meu email aqui
+
