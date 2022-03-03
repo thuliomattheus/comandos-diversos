@@ -1,0 +1,42 @@
+# Pesquisar pelo nome da classe em todos os projetos abertos do workspace
+- Ctrl + Shift + R
+
+# Ir até a linha desejada
+- Ctrl + L
+
+# Pesquisar sequência de palavras exatamente como estiver escrito
+- Ctrl + Shift + Alt + L
+
+# Pesquisar palavra no workspace ou no projeto atual
+- Ctrl + H
+
+# Pesquisar palavra na classe atual
+- Ctrl + F
+
+# Buscador de classes das libs disponíveis
+- Ctrl + Shift + T
+
+# Gerador de construtores, getters, setters, hash code, equals e toString
+- Shift + Alt + S
+
+# Várias opções de operações para o conteúdo selecionado
+- Ctrl + 1
+
+# Auto importação das classes declaradas e ainda não importadas
+- Ctrl + Shift + O
+
+# Indentação automática do arquivo ou da parte selecionada
+- Ctrl + Shift + F
+
+# Altera o posicionamento central da tela
+- Ctrl + Seta Para Baixo
+- Ctrl + Seta Para Cima
+
+# Troca o conteúdo da linha atual -ou selecionadas- com o conteúdo acima ou abaixo -dependendo de qual seta foi pressionada-
+- Alt + Seta Para Baixo
+- Alt + Seta Para Cima
+
+# Mostra a última linha modificada no primeiro caso e vai até a próxima linha modificada no segundo caso
+- Alt + Seta Para Esquerda
+- Alt + Seta Para Direita
+
