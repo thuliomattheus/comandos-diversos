@@ -1,0 +1,21 @@
+# Cria as permissões necessárias para o usuário logado conseguir chamar o docker
+sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker
+
+# Cria o container do mysql
+docker run --restart=always -d --name mysql -e MYSQL_ROOT_PASSWORD=root -p 3306:3306 mysql:latest
+
+# Roda o container do mysql
+# docker start mysql
+
+# Roda o bash do mysql no terminal padrão do linux
+docker exec -it mysql bash
+
+# Acessa o mysql com as credenciais usadas na criação do container
+mysql -u root -p
+
+# Cria os bancos necessários e faz as operações em sql;
+CREATE DATABASE minha_tabela;
+INSERT INTO minha_tabela(id, nome, telefone) values (1, 'fulano', '2134689');
+SELECT * FROM minha_tabela;
