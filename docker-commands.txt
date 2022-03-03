@@ -13,6 +13,9 @@
 # Criar imagem a partir de um arquivo chamado Dockerfile
 - docker build <path_do_dockerfile>
 
+# Criar imagem a partir de um arquivo chamado Dockerfile e "taggeia" essa imagem com nome e versão
+- docker build -t <tag_da_imagem> <path_do_dockerfile>
+
 #Criar imagem a partir de um arquivo Dockerfile com outro nome
 - docker build -f <nome_do_arquivo> <path_doc_arquivo>
 -- Ex: docker build -f Dockerfile.build .
@@ -53,28 +56,15 @@
 - docker load --input <nome_do_arquivo.tar>
 - docker load -i <nome_do_arquivo.tar>
 
-# Criar um container a partir de uma imagem e já iniciar esse container
-- docker run <nome_da_imagem>
-
-# Criar um container a partir de uma imagem e expor uma porta do container em uma porta do host
-- docker run -p <porta_do_host>:<porta_do_container> <nome_da_imagem>
-- docker run --publish <porta_do_host>:<porta_do_container> <nome_da_imagem>
-
-# Criar um container a partir de uma imagem e rodar esse container em segundo plano, não travando o console
-- docker run -d <nome_da_imagem>
-- docker run --detach <nome_da_imagem>
-
-# Criar um container a partir de uma imagem e dar um nome a esse container
-- docker run --name <nome_do_container> <nome_da_imagem>
-
-# Criar um container a partir de uma imagem e quando a execução desse novo container for interrompida, remover esse container
-- docker run --rm <nome_da_imagem>
-
-# Criar um container a partir de uma imagem e apontar a saída do console para o próprio container
-- docker run --it <nome_da_imagem>
-
-# Verificar o log dos containers
+# Verificar o log do container
 - docker logs <nome_do_container>
+
+# Verificar o log do container e apontar a saida do console pra esse log
+- docker logs -f --since <periodo_maximo_desejado> <id_do_container>
+--Ex: docker logs -f --since 50m f85f65186951
+
+# Matar todos os containers parados -comando não indicado, é melhor usar o stop-
+- docker kill $(docker ps -a -q)
 
 # Baixar uma imagem do registry configurado (o default é o Docker Hub)
 - docker pull <nome_da_imagem>
@@ -82,5 +72,39 @@
 # Enviar uma imagem local para o registry configurado (o default é o Docker Hub)
 - docker push <nome_da_imagem>
 
+# Criar um container a partir de uma imagem e já iniciar esse container
+- docker run <nome_da_imagem>
+
+# Criar um container a partir de uma imagem e rodar esse container em segundo plano, não travando o console
+- docker run -d <nome_da_imagem>
+- docker run --detach <nome_da_imagem>
+
+# Criar um container a partir de uma imagem informando uma variável de ambiente
+- docker run -e <nome_da_variavel>=<valor_da_variavel_entre_aspas> <nome_da_imagem>
+--Ex: docker run -e TZ="America/Sao_Paulo" openjdk:8
+
+# Criar um container a partir de uma imagem e apontar a saída do console para o próprio container
+- docker run -it <nome_da_imagem>
+
+# Criar um container a partir de uma imagem e dar um nome a esse container
+- docker run --name <nome_do_container> <nome_da_imagem>
+
+# Criar um container a partir de uma imagem e expor uma porta do container em uma porta do host
+- docker run -p <porta_do_host>:<porta_do_container> <nome_da_imagem>
+- docker run --publish <porta_do_host>:<porta_do_container> <nome_da_imagem>
+
+# Criar um container a partir de uma imagem e quando a execução desse novo container for interrompida, remover esse container
+- docker run --rm <nome_da_imagem>
+
+# Passar um volume para o container e acessá-lo como workspace
+- docker run -v <path_do_volume_no_host>:/<nome_do_diretorio_dentro_do_container> -w /<nome_do_diretorio_dentro_do_container> <nome_da_imagem>
+
+# Executar jar
+--Ex: docker run -it -v ${PWD}:/app -w /app -p 8080:8080 openjdk:8 java -jar nomeDoJar.jar
+
 # Procurar imagens a partir de uma palavra-chave no registry configurado (o default é o Docker Hub)
 - docker search <nome_da_imagem>
+
+# Remove todas as imagens não usadas, containers, volumes e networks
+- docker system prune -a -f
+
