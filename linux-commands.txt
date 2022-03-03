@@ -1,0 +1,17 @@
+# Ativar a opção de minimizar as aplicações quando estão abertas e o usuário pressiona seu ícone no dock
+- gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
+
+# Alterar o dono de todo o conteúdo de forma recursiva
+- sudo chown <nome_do_usuario> -R <arquivo_ou_diretorio_que_terá_seu_dono_alterado>
+--Ex: sudo chown thulio.mattheus -R **/target
+
+# Acessar máquina externa usando ssh
+- ssh [-i <nome_da_chave_ou_do_certificado_de_autenticação>] <endereço_da_maquina_destino>
+--Ex: ssh host_no_ec2@dockermachine.com.br
+--Ex: ssh -i minha_chave.pem host_no_ec2@dockermachine.com.br
+
+# Realizar cópia de arquivos usando ssh
+- scp [-i <nome_da_chave_ou_do_certificado_de_autenticação>] <nome_do_arquivo_com_path> <path_do_arquivo_na_maquina_destino>
+--Ex: scp /tmp/meu_arquivo.tar host_no_ec2@dockermachine.com.br:~/path_desejado
+--Ex: scp -i minha_chave.pem /tmp/meu_arquivo.tar host_no_ec2@dockermachine.com.br:~/path_desejado
+
