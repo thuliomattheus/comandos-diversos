@@ -1,7 +1,12 @@
 mvn clean package site
 mvn clean install -DskipTests
-mvn spring-boot:run
 mvn dependency:tree
 
 # Alterar a versão de todo o projeto
 mvn versions:set -DnewVersion=1.0.1-SNAPSHOT
+
+# Rodar projeto spring-boot
+mvn spring-boot:run
+
+# Criar imagem de um projeto a partir do spring-boot
+mvn spring-boot:build-image
