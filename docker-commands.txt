@@ -108,3 +108,7 @@
 # Remove todas as imagens não usadas, containers, volumes e networks
 - docker system prune -a -f
 
+# Atualizar política de restart do container na inicialização da máquina
+- docker update --restart <opcao> <nome_do_container>
+--Ex: docker update --restart always openjdk:8
+--Ex: docker update --restart no openjdk:8
