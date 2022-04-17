@@ -19,3 +19,8 @@
 # Rodar um consumidor que ouve tudo que está no cache do kafka
 ./bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic STORE_NEW_ORDER --from-beginning
 
+# Descrever os tópicos num servidor kafka
+./bin/kafka-topics.sh --bootstrap-server localhost:9092 --describe
+
+# Alterar a quantidade de partições de um tópico do Kafka
+./bin/kafka-topics.sh --alter --bootstrap-server localhost:9092 --topic ECOMMERCE_NEW_ORDER --partitions 3
