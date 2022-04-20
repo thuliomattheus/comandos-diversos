@@ -112,3 +112,6 @@
 - docker update --restart <opcao> <nome_do_container>
 --Ex: docker update --restart always openjdk:8
 --Ex: docker update --restart no openjdk:8
+
+# Executar o shell dentro de um container
+- docker exec -it <nome_do_container> /bin/sh
