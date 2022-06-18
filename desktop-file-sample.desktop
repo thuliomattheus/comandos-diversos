@@ -10,6 +10,7 @@ Exec=/home/test/path/dbeaver/dbeaver
 Icon=/home/test/path/dbeaver/icon.xpm
 Categories=IDE;Development
 WMCLASS=DBeaver
+# To see the WMClass associated with a file, type `xprop WM_CLASS` in the shell
 StartupWMClass=DBeaver
 StartupNotify=true
 Keywords=Database;SQL;IDE;JDBC;ODBC;MySQL;PostgreSQL;Oracle;DB2;MariaDB
