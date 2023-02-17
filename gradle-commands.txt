@@ -1,0 +1,2 @@
+# Update gradle version
+./gradlew wrapper --gradle-version <gradle-version>
