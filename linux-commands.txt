@@ -15,5 +15,8 @@
 --Ex: scp /tmp/meu_arquivo.tar host_no_ec2@dockermachine.com.br:~/path_desejado
 --Ex: scp -i minha_chave.pem /tmp/meu_arquivo.tar host_no_ec2@dockermachine.com.br:~/path_desejado
 
+# Reiniciar o gerenciador de rede do Ubuntu
+- sudo systemctl restart NetworkManager.service
+
 # Reinstalar o gerenciador de rede do Ubuntu
 - sudo apt install --reinstall network-manager
