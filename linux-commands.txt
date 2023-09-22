@@ -6,7 +6,7 @@
 --Ex: sudo chown thulio.mattheus -R **/target
 
 # Acessar máquina externa usando ssh
-- ssh [-i <nome_da_chave_ou_do_certificado_de_autenticação>] <endereço_da_maquina_destino>
+- ssh [-i <nome_da_chave_ou_do_certificado_de_autenticação>] <endereço_da_máquina_destino>
 --Ex: ssh host_no_ec2@dockermachine.com.br
 --Ex: ssh -i minha_chave.pem host_no_ec2@dockermachine.com.br
 
