@@ -15,3 +15,4 @@ StartupWMClass=DBeaver
 StartupNotify=true
 Keywords=Database;SQL;IDE;JDBC;ODBC;MySQL;PostgreSQL;Oracle;DB2;MariaDB
 MimeType=application/sql
+teste
