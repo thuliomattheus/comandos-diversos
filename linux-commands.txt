@@ -23,3 +23,6 @@
 
 # Matar processo
 - ps -aux | grep <nome_do_processo_que_vai_morrer>
+
+# Gerar UUID
+- uuid
