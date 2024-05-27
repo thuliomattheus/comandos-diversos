@@ -1,0 +1,5 @@
+# Search which services calls a specific url
+FROM Span SELECT * WHERE http.url LIKE '%/product%'
+
+# List most called endpoints
+FROM Transaction SELECT count(1) WHERE containerName = 'my-rest-api' FACET request.uri
