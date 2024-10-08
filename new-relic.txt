@@ -1,5 +1,60 @@
-# Search which services calls a specific url
+# Search which services calls a pattern url
 FROM Span SELECT * WHERE http.url LIKE '%/product%'
 
-# List most called endpoints
-FROM Transaction SELECT count(1) WHERE containerName = 'my-rest-api' FACET request.uri
+# Show the 3 most called endpoints
+FROM Transaction
+SELECT count(1) WHERE containerName = 'my-rest-api'
+FACET request.uri -- FACET é o GROUP BY do NRQL
+LIMIT 3
+
+# Show the name of every different endpoint which generated some kind of error in the last week
+SELECT uniques(request.uri) -- uniques é o distinct do NRQL
+FROM TransactionError
+WHERE containerName = 'my-rest-api'
+AND request.method = 'GET'
+LIMIT max
+SINCE 1 week ago
+UNTIL now
+
+# Show the quantity of errors per endpoint and compare the result with the previous week
+SELECT uniqueCount(request.uri)
+FROM TransactionError
+WHERE containerName = 'my-rest-api'
+COMPARE WITH 1 week ago
+
+# Some useful methods like filter and percentage
+SELECT
+    filter(count(1), WHERE error = true) AS 'Error',
+    filter(count(1), WHERE error = false) AS 'Success',
+    percentage(count(1), WHERE error = true) AS 'Error (%)'
+    percentage(count(1), WHERE error = false) AS 'Success (%)',
+FROM Transaction
+WHERE containerName = 'my-rest-api'
+AND request.uri = '/v1/my-endpoint'
+SINCE 12 hours ago
+
+# Multifaceted query to show most occurred errors per user and address
+SELECT count(1)
+FROM TransactionError
+WHERE containerName = 'my-rest-api'
+AND request.uri = '/v1/my-endpoint'
+FACET userIdentification, addressCountry, errorReason
+SINCE 12 hours ago
+
+# Show average of specific endpoint duration per country
+SELECT average(totalTime) FROM Transaction
+WHERE containerName = 'my-rest-api'
+AND request.uri = '/v1/my-endpoint'
+FACET addressCountry
+TIMESERIES
+WITH TIMEZONE 'America/Sao_Paulo'
+
+# Facet with conditions
+SELECT percentage (count(1), WHERE error is true) FROM Transaction
+WHERE containerName = 'my-rest-api'
+AND request.uri = '/v1/my-endpoint'
+FACET CASES(
+    WHERE addressCountry = 'BEL' as 'Belgium', 
+    WHERE addressCountry = 'FRA' as 'France', 
+    WHERE addressCountry = 'CZE' as 'Czech'
+) LIMIT MAX 
