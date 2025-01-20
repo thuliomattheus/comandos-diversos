@@ -1,1 +1,5 @@
+# Creating a dependency build of a project folder
+helm dependency build project-folder-name/
 
+# Evaluating the files into the folder project
+helm template project-folder-name/
