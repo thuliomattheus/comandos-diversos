@@ -81,3 +81,8 @@
 - git config user.email
 - git config user.email=meu email aqui
 
+# Ignorar arquivos apenas localmente
+- git update-index --skip-worktree <file-list>
+
+# Parar de ignorar arquivos apenas localmente
+- git update-index --no-skip-worktree <file-list>
