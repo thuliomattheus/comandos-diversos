@@ -26,3 +26,6 @@
 
 # Gerar UUID
 - uuid
+
+# Desabilitar notificações
+gsettings set org.gnome.desktop.notifications show-banners false
